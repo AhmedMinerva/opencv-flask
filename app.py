@@ -5,7 +5,7 @@ import os
 # and send_from_directory will help us to send/show on the
 # browser the file that the user just uploaded
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
 import testcv
 # Initialize the Flask application
@@ -43,7 +43,7 @@ def upload():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         # Redirect the user to the uploaded_file route, which
         # will basicaly show on the browser the uploaded file
-        print filename
+        print (filename)
         testcv.image_make(filename)
 
         return redirect(url_for('uploaded_file',
